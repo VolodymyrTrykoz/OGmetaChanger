@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Button</title>
+    <meta property="fb:app_id"              content="2160146270936955" />
+    <meta property="og:url"                 content="http://www.clearmotion.com/technology" />
+    <meta property="og:title"               content="Old Title" />
+    <meta property="og:description"         content="Old description" />
+    <meta property="og:type"                content="website" />
+    <meta property="og:image"               content="https://www.your-domain.com/path/image.jpg" />
+    <meta property="og:image"               content="http://drib.tech/fbsharetest/quiz_landing.jpg" >
+    <meta property="og:image:width"         content="1200" >
+    <meta property="og:image:height"        content="630" >
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId            : '2160146270936955',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v2.10'
+            });
+            FB.AppEvents.logPageView();
+        };
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+</head>
+<body>
+<a href="#" id="change" onclick="return changeMeta();">Change</a>
+
+
+<script>
+    function changeMeta()
+    {
+        let title = 'New title';
+        let description = 'New description';
+
+        overrideMeta(
+            title,
+            description);
+
+        return false;
+    }
+
+    function overrideMeta(overrideTitle, overrideDescription)
+    {
+        FB.ui({
+                method: 'share_open_graph',
+                action_type: 'og.likes',
+                action_properties: JSON.stringify({
+                    object: {
+                        'og:title': overrideTitle,
+                        'og:description': overrideDescription
+                    }
+                })
+            },
+            function (response) {
+                // Action after response
+            });
+    }
+
+
+</script>
+</body>
+</html>
