@@ -1,20 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles.css">
-    <title>Button</title>
-    <meta property="fb:app_id"              content="2160146270936955">
-    <meta property="og:url"                 content="https://volodymyrtrykoz.github.io/OGmetaChanger/index.html">
-    <meta property="og:title"               content="Old Title">
-    <meta property="og:description"         content="Old description">
-    <meta property="og:type"                content="website">
-    <meta property="og:image"               content="https://lab73digital.github.io/memorin/img/memorin-share.png">
-    <meta property="og:image:width"         content="1200">
-    <meta property="og:image:height"        content="630">
+    <title>Are you the real StarTrek geek?</title>
+    <meta charset="utf-8">
+    <meta property="fb:app_id" content="2160146270936955" />
+    <meta property="og:url" content="https://volodymyrtrykoz.github.io/OGmetaChanger/" >
+    <meta property="og:type" content="article" >
+    <meta property="og:title" content="Are you the real Star Trek geek?" >
+    <meta property="og:description" content="Prove your Star Trek geekhood! Are you wise like Yoda or Jar Jar Binks?" >
+    <meta property="og:image" content="http://drib.tech/fbsharetest/quiz_landing.jpg" >
+    <meta property="og:image:width" content="1200" >
+    <meta property="og:image:height" content="630" >
     <script>
         window.fbAsyncInit = function() {
             FB.init({
@@ -25,6 +21,7 @@
             });
             FB.AppEvents.logPageView();
         };
+
         (function(d, s, id){
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) {return;}
@@ -35,31 +32,88 @@
     </script>
 </head>
 <body>
+<h1>Are you the real Star Trek geek?</h1>
+<p>
+    Prove your Star Trek geekhood! Are you wise like Yoda or Jar Jar Binks?
+</p>
+<p>
+    <strong>
+        This is FB js share demo. For full article please visit: &quot;<a href="http://drib.tech/programming/dynamically-change-facebook-open-graph-meta-data-javascript" target="_blank">Dynamically change Facebook open graph meta data with JavaScript</a>&quot; .
+    </strong>
+</p>
+<form action="#" method="post" id="star_trek_quiz">
+    <dl>
+        <dt>James T Kirk - What does the 'T' stand for?</dt>
+        <dd><label><input name="answer" type="radio" value="Thomas">Thomas</label></dd>
+        <dd><label><input name="answer" type="radio" value="Titus">Titus</label></dd>
+        <dd><label><input name="answer" type="radio" value="Tiberius">Tiberius</label></dd>
+        <dd><label><input name="answer" type="radio" value="Tarquin">Tarquin</label></dd>
+    </dl>
 
-<a id="change" class="change" onclick="return changeMeta();" href="https://www.facebook.com/sharer/sharer.php?app_id=2160146270936955&sdk=joey&u=https://volodymyrtrykoz.github.io/OGmetaChanger/&display=popup&ref=plugin&src=share_button" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=580')">Change</a>
+    <hr>
+    <input type="submit" value="Submit answer" onclick="return submitAndShare();">
+</form>
+<hr>
+<a href="#" onclick="return shareOriginal();">Share with original og:meta data</a>
+
 
 <script>
-    function changeMeta()
+    function submitAndShare()
     {
-        let title = 'New title';
-        let description = 'New description';
+        // get the selected answer
+        var playerName = 'George L.';
+        var val = '';
+        var form = document.getElementById('star_trek_quiz');
+        var answers = form.elements['answer'];
 
-        overrideMeta(
+        for(var i=0; i<answers.length; i++)
+        {
+            if(answers[i].checked)
+            {
+                val = answers[i].value;
+                break;
+            }
+        }
+
+        var title = '';
+        var description = '';
+        var image = '';
+        switch(val)
+        {
+            case 'Tiberius':
+                title = playerName + ' is wise like Yoda!';
+                description = 'Congratulations! ' + playerName + ' is the champion of the StarTrek geekhood - and nobody can beat him. Or ... ? Click to play and prove to the ' + playerName + ' that you are as good as  him!';
+                image = 'http://drib.tech/fbsharetest/quiz_yoda.jpg';
+                break;
+            default:
+                title = playerName + ' is wise like Jar Jar Binks!';
+                description = playerName + 'is the champion of the StarTrek geekhood - NOT! Click to play and prove to the ' + playerName + ' that anybody is better then him!';
+                image = 'http://drib.tech/fbsharetest/quiz_jar_jar_binks.jpg';
+                break;
+        }
+
+
+        // and finally share it
+
+        shareOverrideOGMeta(window.location.href,
             title,
-            description);
+            description,
+            image);
 
         return false;
     }
 
-    function overrideMeta(overrideTitle, overrideDescription)
+    function shareOverrideOGMeta(overrideLink, overrideTitle, overrideDescription, overrideImage)
     {
         FB.ui({
                 method: 'share_open_graph',
                 action_type: 'og.likes',
                 action_properties: JSON.stringify({
                     object: {
+                        'og:url': overrideLink,
                         'og:title': overrideTitle,
-                        'og:description': overrideDescription
+                        'og:description': overrideDescription,
+                        'og:image': overrideImage
                     }
                 })
             },
@@ -68,6 +122,18 @@
             });
     }
 
+    function shareOriginal()
+    {
+        FB.ui({
+                method: 'share',
+                href: window.location.href
+            },
+            function (response) {
+                // Action after response
+            });
+
+        return false;
+    }
 
 </script>
 </body>
