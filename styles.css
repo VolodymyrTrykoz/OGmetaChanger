@@ -14,3 +14,7 @@ button {
 input {
     height: 42px;
 }
+
+.wrapper {
+    height: 80%;
+}

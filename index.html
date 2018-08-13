@@ -12,8 +12,10 @@
     <meta property="og:image:width" content="1200" >
     <meta property="og:image:height" content="630" >
     <link rel="shortcut icon" href="img/favicon.ico?2" type="image/x-icon">
+    <link rel="stylesheet" href="Calendario/css/calendar.css">
+    <link rel="stylesheet" href="Calendario/css/custom_1.css">
     <link rel="stylesheet" href="styles.css">
-    <script src="jquery-3.3.1/jquery-3.3.1.min.js"></script>
+
     <script>
         window.fbAsyncInit = function() {
             FB.init({
@@ -37,39 +39,28 @@
 <body>
     <input type="number">
     <button>Change</button>
-<script>
-    $('button').on('click', submitAndShare);
-    function submitAndShare() {
-        let inp = $('input').val();
-        let title = 'User thinks that next friday rate will be ' + `${inp}`;
-        console.log(title);
-        let description = 'NEW DESCRIPTION';
-
-        shareOverrideOGMeta(window.location.href, title, description);
-
-        return false;
-    }
-
-    function shareOverrideOGMeta(overrideLink, overrideTitle, overrideDescription, overrideImage)
-    {
-        FB.ui({
-                method: 'share_open_graph',
-                action_type: 'og.likes',
-                action_properties: JSON.stringify({
-                    object: {
-                        'og:url': overrideLink,
-                        'og:title': overrideTitle,
-                        'og:description': overrideDescription,
-                        'og:image': overrideImage
-                    }
-                })
-            },
-            function (response) {
-                // Action after response
-            });
-    }
 
 
-</script>
+    <div class="wrapper">
+        <div class="custom-calendar-wrap custom-calendar-full">
+            <div class="custom-header clearfix">
+                <h3 class="custom-month-year">
+                    <span id="custom-month" class="custom-month"></span>
+                    <span id="custom-year" class="custom-year"></span>
+                    <nav>
+                        <span id="custom-prev" class="custom-prev"></span>
+                        <span id="custom-next" class="custom-next"></span>
+                        <span id="custom-current" class="custom-current" title="Got to current date"></span>
+                    </nav>
+                </h3>
+            </div>
+            <div id="calendar" class="fc-calendar-container"></div>
+        </div>
+    </div><!-- /container -->
+
+    <script src="jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script src="Calendario/js/jquery.calendario.js"></script>
+    <script src="Calendario/js/data.js"></script>
+    <script src="js.js"></script>
 </body>
 </html>
