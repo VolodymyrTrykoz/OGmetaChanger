@@ -1,4 +1,4 @@
-.change {
+button {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
@@ -9,4 +9,8 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+}
+
+input {
+    height: 42px;
 }
