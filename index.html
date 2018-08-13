@@ -6,8 +6,8 @@
     <meta property="fb:app_id" content="2160146270936955" />
     <meta property="og:url" content="https://volodymyrtrykoz.github.io/OGmetaChanger/" >
     <meta property="og:type" content="article" >
-    <meta property="og:title" content="Are you the real Star Trek geek?" >
-    <meta property="og:description" content="Prove your Star Trek geekhood! Are you wise like Yoda or Jar Jar Binks?" >
+    <meta property="og:title" content="Old title?" >
+    <meta property="og:description" content="Old description" >
     <meta property="og:image" content="http://drib.tech/fbsharetest/quiz_landing.jpg" >
     <meta property="og:image:width" content="1200" >
     <meta property="og:image:height" content="630" >
@@ -32,54 +32,18 @@
     </script>
 </head>
 <body>
-<h1>Are you the real Star Trek geek?</h1>
-<p>
-    Prove your Star Trek geekhood! Are you wise like Yoda or Jar Jar Binks?
-</p>
-<p>
-    <strong>
-        This is FB js share demo. For full article please visit: &quot;<a href="http://drib.tech/programming/dynamically-change-facebook-open-graph-meta-data-javascript" target="_blank">Dynamically change Facebook open graph meta data with JavaScript</a>&quot; .
-    </strong>
-</p>
-<form action="#" method="post" id="star_trek_quiz">
-    <dl>
-        <dt>James T Kirk - What does the 'T' stand for?</dt>
-        <dd><label><input name="answer" type="radio" value="Thomas">Thomas</label></dd>
-        <dd><label><input name="answer" type="radio" value="Titus">Titus</label></dd>
-        <dd><label><input name="answer" type="radio" value="Tiberius">Tiberius</label></dd>
-        <dd><label><input name="answer" type="radio" value="Tarquin">Tarquin</label></dd>
-    </dl>
 
-    <hr>
-    <input type="submit" value="Submit answer" onclick="return submitAndShare();">
-    <button>Change</button>
-</form>
-<hr>
-<a href="#" onclick="return shareOriginal();">Share with original og:meta data</a>
+    <button onclick="return submitAndShare();">Change</button>
+
 
 
 <script>
-    function submitAndShare()
-    {
+    function submitAndShare() {
         // get the selected answer
-        var playerName = 'George L.';
-        var val = '';
-        var form = document.getElementById('star_trek_quiz');
-        var answers = form.elements['answer'];
-
-
         var title = 'NEW TITLE';
         var description = 'NEW DESCRIPTION';
 
-
-
-
-        // and finally share it
-
-        shareOverrideOGMeta(window.location.href,
-            title,
-            description
-            );
+        shareOverrideOGMeta(window.location.href, title, description);
 
         return false;
     }
@@ -103,19 +67,7 @@
             });
     }
 
-    function shareOriginal()
-    {
-        FB.ui({
-                method: 'share',
-                href: window.location.href
-            },
-            function (response) {
-                // Action after response
-            });
-
-        return false;
-    }
-
+    
 </script>
 </body>
 </html>
