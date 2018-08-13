@@ -67,14 +67,6 @@
         var form = document.getElementById('star_trek_quiz');
         var answers = form.elements['answer'];
 
-        for(var i=0; i<answers.length; i++)
-        {
-            if(answers[i].checked)
-            {
-                val = answers[i].value;
-                break;
-            }
-        }
 
         var title = 'NEW TITLE';
         var description = 'NEW DESCRIPTION';
@@ -86,8 +78,8 @@
 
         shareOverrideOGMeta(window.location.href,
             title,
-            description,
-            image);
+            description
+            );
 
         return false;
     }
