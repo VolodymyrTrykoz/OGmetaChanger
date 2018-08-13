@@ -33,11 +33,15 @@
 </head>
 <body>
 
-    <button onclick="return submitAndShare();">Change</button>
+    <button>Change</button>
 
 
 
 <script>
+    let button = document.querySelector('button');
+    button.onclick = function(){
+        return submitAndShare()
+    };
     function submitAndShare() {
         // get the selected answer
         var title = 'NEW TITLE';
@@ -67,7 +71,7 @@
             });
     }
 
-    
+
 </script>
 </body>
 </html>
