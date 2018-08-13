@@ -52,6 +52,7 @@
 
     <hr>
     <input type="submit" value="Submit answer" onclick="return submitAndShare();">
+    <button>Change</button>
 </form>
 <hr>
 <a href="#" onclick="return shareOriginal();">Share with original og:meta data</a>
@@ -75,22 +76,10 @@
             }
         }
 
-        var title = '';
-        var description = '';
-        var image = '';
-        switch(val)
-        {
-            case 'Tiberius':
-                title = playerName + ' is wise like Yoda!';
-                description = 'Congratulations! ' + playerName + ' is the champion of the StarTrek geekhood - and nobody can beat him. Or ... ? Click to play and prove to the ' + playerName + ' that you are as good as  him!';
-                image = 'http://drib.tech/fbsharetest/quiz_yoda.jpg';
-                break;
-            default:
-                title = playerName + ' is wise like Jar Jar Binks!';
-                description = playerName + 'is the champion of the StarTrek geekhood - NOT! Click to play and prove to the ' + playerName + ' that anybody is better then him!';
-                image = 'http://drib.tech/fbsharetest/quiz_jar_jar_binks.jpg';
-                break;
-        }
+        var title = 'NEW TITLE';
+        var description = 'NEW DESCRIPTION';
+
+
 
 
         // and finally share it
