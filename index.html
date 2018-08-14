@@ -15,35 +15,20 @@
     <link rel="stylesheet" href="Calendario/css/calendar.css">
     <link rel="stylesheet" href="Calendario/css/custom_1.css">
     <link rel="stylesheet" href="styles.css">
-
-    <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId            : '2160146270936955',
-                autoLogAppEvents : true,
-                xfbml            : true,
-                version          : 'v2.10'
-            });
-            FB.AppEvents.logPageView();
-        };
-
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
 </head>
 <body>
-    <input type="number">
-    <button>Change</button>
-
+    <div class="popUp invisible">
+        <input type="number">
+        <button>Change</button>
+        <div class="close">
+            <div class="close__1"></div>
+            <div class="close__2"></div>
+        </div>
+    </div>
 
     <div class="wrapper">
         <div class="custom-calendar-wrap custom-calendar-full">
-            <div class="custom-header clearfix">
+            <div class="custom-header">
                 <h3 class="custom-month-year">
                     <span id="custom-month" class="custom-month"></span>
                     <span id="custom-year" class="custom-year"></span>
@@ -56,8 +41,7 @@
             </div>
             <div id="calendar" class="fc-calendar-container"></div>
         </div>
-    </div><!-- /container -->
-
+    </div>
     <script src="jquery-3.3.1/jquery-3.3.1.min.js"></script>
     <script src="Calendario/js/jquery.calendario.js"></script>
     <script src="Calendario/js/data.js"></script>

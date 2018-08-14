@@ -1,4 +1,21 @@
 $(document).ready(function(){
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId            : '2160146270936955',
+            autoLogAppEvents : true,
+            xfbml            : true,
+            version          : 'v2.10'
+        });
+        FB.AppEvents.logPageView();
+    };
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
     let day;
     let month;
     $('button').on('click', submitAndShare);
@@ -10,7 +27,6 @@ $(document).ready(function(){
         shareOverrideOGMeta(window.location.href, title, description);
         return false;
     }
-
     function shareOverrideOGMeta(overrideLink, overrideTitle, overrideDescription, overrideImage) {
         FB.ui({
                 method: 'share_open_graph',
@@ -28,18 +44,15 @@ $(document).ready(function(){
                 // Action after response
         });
     }
-
     function runCalendar() {
-        let cal = $( '#calendar' ).calendario( {
+        let cal = $('#calendar').calendario( {
                 onDayClick : function( $el, $contentEl, dateProperties ) {
-
+                    showPopUp();
                     for( var key in dateProperties ) {
                         console.log( key + ' = ' + dateProperties[ key ] );
                         day = dateProperties.day;
                         month = dateProperties.monthname
-                        // return day;
                     }
-
                 },
                 caldata : codropsEvents
             } ),
@@ -64,6 +77,11 @@ $(document).ready(function(){
 
     runCalendar();
 
-
+    function showPopUp(){
+        $('.popUp').removeClass('invisible').addClass('visible');
+        $('.close, button').on('click', ()=>{
+            $('.popUp').removeClass('visible').addClass('invisible');
+        })
+    }
 
 });
