@@ -20,12 +20,19 @@ $(document).ready(function(){
     let month;
     $('button').on('click', submitAndShare);
     function submitAndShare() {
-        let rate = $('input').val();
-        let title = `User Petro thinks that ${day}  of  ${month} rate will be ${rate}`;
-        console.log(title);
-        let description = 'Отакої, а як думаєш ти?';
-        shareOverrideOGMeta(window.location.href, title, description);
-        return false;
+        if($('input').val() != ''){
+            let rate = $('input').val();
+            console.log('rate = ' + rate);
+            let title = `User Petro thinks that ${day}  of  ${month} rate will be ${rate}`;
+            console.log(title);
+            let description = 'Отакої, а як думаєш ти?';
+            shareOverrideOGMeta(window.location.href, title, description);
+            return false;
+        }
+        else {
+            return
+        }
+
     }
     function shareOverrideOGMeta(overrideLink, overrideTitle, overrideDescription, overrideImage) {
         FB.ui({
@@ -79,8 +86,14 @@ $(document).ready(function(){
 
     function showPopUp(){
         $('.popUp').removeClass('invisible').addClass('visible');
-        $('.close, button').on('click', ()=>{
+        $('.close').on('click', () => {
             $('.popUp').removeClass('visible').addClass('invisible');
+        });
+        $('button').on('click', () => {
+            if($('input').val() === '') {
+                alert('pick your rate');
+                return
+            }
         })
     }
 
